@@ -41,15 +41,15 @@ const Card = () => {
           <tbody>
             <tr>
               <td>Teléfono:</td>
-              <td className="text-end fw-bold">${value.telefono_contacto}</td>
+              <td className="text-end fw-bold">{value.telefono_contacto}</td>
             </tr>
             <tr>
               <td>C.I:</td>
-              <td className="text-end fw-bold">$</td>
+              <td className="text-end fw-bold">{value.cedula_donatario}</td>
             </tr>
             <tr>
               <td>Lugar de donación:</td>
-              <td className="text-end fw-bold">${value.establecimiento}</td>
+              <td className="text-end fw-bold">{value.establecimiento}</td>
             </tr>
             <tr>
               <td>RH:</td>
@@ -59,11 +59,11 @@ const Card = () => {
             </tr>
             <tr>
               <td>Volúmenes:</td>
-              <td className="text-end fw-bold">${value.volumenes_necesarios}</td>
+              <td className="text-end fw-bold">{value.volumenes_necesarios}</td>
             </tr>
             <tr>
               <td>Fecha límite:</td>
-              <td className="text-end fw-bold">${value.fecha_limite}</td>
+              <td className="text-end fw-bold">{value.fecha_limite}</td>
             </tr>
           </tbody>
         </table>
