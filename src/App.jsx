@@ -8,7 +8,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div class="container-fluid p-0 m-0 d-flex justify-content-center">
+    <div className="container-fluid p-0 m-0 d-flex justify-content-center">
       <Content/>
     </div>
   )
