@@ -7,7 +7,7 @@ const Card = ({ record }) => {
 
   return (
     <div className="col-md-6 col-lg-4 d-flex align-items-stretch">
-      <div className="card bg-white rounded-5 mb-3 w-100">
+      <div className="card bg-white rounded-5 mb-3 w-100 border-danger border-3">
         <div className="d-flex justify-content-center align-items-center fs-4">
           <span className="fw-bold">{record.nombre_apellido_donatario}</span>
           <span>

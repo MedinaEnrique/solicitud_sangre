@@ -1,16 +1,27 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
-import Content from "./components/Content";
-import Map from "./components/Map";
+import NavBar from "./components/NavBar";
+import { useEffect } from "react";
 
 function App() {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname == '/') {
+      navigate("/lista-solicitudes")
+    }
+  }, [])
+  
+  
   return (
-    <div className="container">
-      <Content />
-      <Map />
-    </div>
+    <>
+      <NavBar />
+      <div className="container mb-5">
+        <Outlet />
+      </div>
+    </>
   );
 }
 

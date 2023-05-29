@@ -1,9 +1,10 @@
 import { useState } from "react";
-import Header from "./Header";
-import ListCard from "./ListCard";
+import Header from "../components/Header";
+import ListCard from "../components/ListCard";
 import axios from "axios";
+import Filter from "../components/Filter";
 
-const Content = () => {
+const ListaSolicitud = () => {
   const [listaSolicitud, setListaSolicitud] = useState(null);
 
   const obtenerSolicitudes = () => {
@@ -14,11 +15,14 @@ const Content = () => {
   };
 
   return (
-    <div className="bg-danger">
-      <Header onClick={() => obtenerSolicitudes()} />
+    <div className="border border-danger-subtle">
+      <Header title={"Solicitudes"} onClick={() => obtenerSolicitudes()}>
+        <hr className="text-danger" />
+        <Filter />
+      </Header>
       <ListCard lista={listaSolicitud} />
     </div>
   );
 };
 
-export default Content;
+export default ListaSolicitud;

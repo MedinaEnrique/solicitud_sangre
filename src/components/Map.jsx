@@ -3,12 +3,12 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 import axios from "axios";
+import Flyto from "./Flyto";
 
-const Map = () => {
-  const [locationData, setLocationData] = useState(null);
+const Map = ({locationData,setLocationData, link,coordenadas}) => {
 
   const [defaultPosition, setDefaultPosition] = useState(null); // Posición predeterminada del mapa
-  const link = 'https://www.google.com/maps/search/?api=1&query='
+  
   
   useEffect(() => {
     // Get the locations
@@ -23,7 +23,7 @@ const Map = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
+    <div className="container my-3">
       {defaultPosition && (
         <MapContainer
           center={defaultPosition}
@@ -53,6 +53,7 @@ const Map = () => {
               </Popup>
             </Marker>
           ))}
+          <Flyto coordenadas={coordenadas}/>
         </MapContainer>
       )}
     </div>

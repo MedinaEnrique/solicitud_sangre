@@ -1,17 +1,14 @@
-import Filter from "./Filter";
-
-const Header = ({ onClick }) => {
+const Header = ({ title,children, onClick }) => {
   return (
     <>
-      <div className="d-flex justify-content-between px-3">
-        <h1 className="text-white text-center w-100">Solicitudes</h1>
-        <span id="iconplus" className="fs-1 text-white" onClick={onClick}>
+      <div className="d-flex justify-content-between px-3 mt-3">
+        <h1 className="text-center w-100">{title}</h1>
+        {onClick && <span id="iconplus" className="fs-1 fw-bold" onClick={onClick}>
           +
-        </span>
+        </span>}
       </div>
 
-      <hr className="text-white" />
-      <Filter />
+      {children}
     </>
   );
 };

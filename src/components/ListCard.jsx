@@ -2,7 +2,7 @@ import Card from "./Card.jsx";
 
 const ListCard = ({ lista }) => {
   return (
-    <div className="row px-2">
+    <div className="row mx-2">
       {lista && lista.map((item) => (
         <Card key={item.id} record={item} />
       ))}
