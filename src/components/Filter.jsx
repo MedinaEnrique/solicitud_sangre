@@ -1,13 +1,9 @@
-import React from "react";
-
-const Filter = ({listaSolicitud}) => {
+const Filter = () => {
   return (
-    <div
-      id="misSolicitudes-container"
-      className="d-flex justify-content-center align-items-center"
-    >
-      Mis solicitudes <input id="check-misSolicitudes" type="checkbox" />
-    </div>
+    <p className="text-white d-flex align-items-center justify-content-center mb-3 fs-4">
+      Mis solicitudes 
+      <input className="form-check-input ms-2" type="checkbox" />
+    </p>
   );
 };
 

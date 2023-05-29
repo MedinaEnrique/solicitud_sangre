@@ -1,60 +1,57 @@
-import React from "react";
+const Card = ({ record }) => {
+  const sangre = ["A+", "A-", "B+", "B-", "O+", "O-", "AB-", "AB+"];
+  const icono =
+    "https://res.cloudinary.com/dhzoxdo6q/image/upload/donacion-sangre/" +
+    sangre[record.tipo_sangre - 1] +
+    ".png";
 
-const Card = ({record}) => {
- 
-return (
-    <div className="info-container d-flex flex-column mx-auto">
-      <div className="header-info-container d-flex justify-content-center center align-items-center">
-        <div className="title-header-info-container">
-          {record.nombre_apellido_donatario}
+  return (
+    <div className="col-md-6 col-lg-4 d-flex align-items-stretch">
+      <div className="card bg-white rounded-5 mb-3 w-100">
+        <div className="d-flex justify-content-center align-items-center fs-4">
+          <span className="fw-bold">{record.nombre_apellido_donatario}</span>
+          <span>
+            <button className="btn btn-link btn-sm text-secondary">
+              <i className="bi bi-trash3 fs-4"></i>
+            </button>
+          </span>
+          <span>
+            <button className="btn btn-link btn-sm">
+              <i className="bi bi-arrow-up-right-circle fs-4"></i>
+            </button>
+          </span>
         </div>
-        <div className="delete-header-info-container text-center">
-          <button className="btn btn-link btn-sm" disabled>
-            <i className="bi bi-trash3"></i>
-          </button>
+
+        <div>
+          <p className="d-flex justify-content-between border-bottom px-2">
+            <span>Teléfono:</span>
+            <span className="fw-bold">{record.telefono_contacto}</span>
+          </p>
+          <p className="d-flex justify-content-between border-bottom px-2">
+            <span>C.I:</span>
+            <span className="fw-bold">{record.cedula_donatario}</span>
+          </p>
+          <p className="d-flex justify-content-between border-bottom px-2">
+            <span>Lugar de donación:</span>
+            <span className="fw-bold">{record.establecimiento}</span>
+          </p>
+          <p className="d-flex justify-content-between border-bottom px-2">
+            <span>RH:</span>
+            <span className="text-end">
+              <img src={icono} className="icono-sangre"></img>
+            </span>
+          </p>
+          <p className="d-flex justify-content-between border-bottom px-2">
+            <span>Volúmenes:</span>
+            <span className="fw-bold">{record.volumenes_necesarios}</span>
+          </p>
+          <p className="d-flex justify-content-between border-bottom px-2">
+            <span>Fecha límite:</span>
+            <span className="fw-bold">{record.fecha_limite}</span>
+          </p>
         </div>
-        <div className="share-header-info-container text-center">
-          <button className="btn btn-link btn-sm">
-            <i className="bi bi-arrow-up-right-circle"></i>
-          </button>
-        </div>
-      </div>
-      <div className="main-info-container">
-        <table className="table">
-          <thead className="d-none">
-          </thead>
-          <tbody>
-            <tr>
-              <td>Teléfono:</td>
-              <td className="text-end fw-bold">{record.telefono_contacto}</td>
-            </tr>
-            <tr>
-              <td>C.I:</td>
-              <td className="text-end fw-bold">{record.cedula_donatario}</td>
-            </tr>
-            <tr>
-              <td>Lugar de donación:</td>
-              <td className="text-end fw-bold">{record.establecimiento}</td>
-            </tr>
-            <tr>
-              <td>RH:</td>
-              <td className="text-end">
-                <img src="${source}" className="icono-sangre"></img>
-              </td>
-            </tr>
-            <tr>
-              <td>Volúmenes:</td>
-              <td className="text-end fw-bold">{record.volumenes_necesarios}</td>
-            </tr>
-            <tr>
-              <td>Fecha límite:</td>
-              <td className="text-end fw-bold">{record.fecha_limite}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className="footer-info-container text-center text-uppercase fw-bold">
-        TOKENNNMMNNNNN
+
+        <p className="text-center pb-3 fw-bold">TOKENNNMMNNNNN</p>
       </div>
     </div>
   );

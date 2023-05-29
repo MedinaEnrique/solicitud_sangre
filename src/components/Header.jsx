@@ -1,23 +1,17 @@
-import React from "react";
 import Filter from "./Filter";
 
-const Header = ({setListaSolicitud}) => {
-  const obtenerSolicitud = () =>{
-    
-  }
+const Header = ({ onClick }) => {
   return (
     <>
-      <div id="header-container" className="d-flex container-fluid text-center">
-        <div id="solicitudes-header">Solicitudes</div>
-        <div id="mas-button-container">+</div>
+      <div className="d-flex justify-content-between px-3">
+        <h1 className="text-white text-center w-100">Solicitudes</h1>
+        <span id="iconplus" className="fs-1 text-white" onClick={onClick}>
+          +
+        </span>
       </div>
 
-      <div
-        id="main-container"
-        className="d-flex flex-column container-fluid align-items-center"
-      >
-        <Filter/>
-      </div>
+      <hr className="text-white" />
+      <Filter />
     </>
   );
 };

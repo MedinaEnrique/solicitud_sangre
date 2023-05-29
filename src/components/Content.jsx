@@ -1,13 +1,22 @@
-import React from "react";
+import { useState } from "react";
 import Header from "./Header";
 import ListCard from "./ListCard";
+import axios from "axios";
 
 const Content = () => {
-  const [listaSolicitud, setListaSolicitud] = useState([]);
+  const [listaSolicitud, setListaSolicitud] = useState(null);
+
+  const obtenerSolicitudes = () => {
+    axios
+      .get("http://192.168.16.90:8000/api/solicitudes")
+      .then((response) => setListaSolicitud(response.data.data))
+      .catch((error) => console.log(error));
+  };
+
   return (
-    <div id="container" className="container-lg p-0 m-0 d-flex flex-column">
-      <Header setListaSolicitud={setListaSolicitud}/>
-      <ListCard listaSolicitud={listaSolicitud}/>
+    <div className="bg-danger">
+      <Header onClick={() => obtenerSolicitudes()} />
+      <ListCard lista={listaSolicitud} />
     </div>
   );
 };
