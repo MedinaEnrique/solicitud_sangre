@@ -1,3 +1,5 @@
+import DeleteButton from "./ButtonDelete";
+
 const Card = ({ record }) => {
   const sangre = ["A+", "A-", "B+", "B-", "O+", "O-", "AB-", "AB+"];
   const icono =
@@ -10,11 +12,7 @@ const Card = ({ record }) => {
       <div className="card bg-white rounded-5 mb-3 w-100 border-danger border-3">
         <div className="d-flex justify-content-center align-items-center fs-4">
           <span className="fw-bold">{record.nombre_apellido_donatario}</span>
-          <span>
-            <button className="btn btn-link btn-sm text-secondary">
-              <i className="bi bi-trash3 fs-4"></i>
-            </button>
-          </span>
+          <DeleteButton id={ record .id} />
           <span>
             <button className="btn btn-link btn-sm">
               <i className="bi bi-arrow-up-right-circle fs-4"></i>

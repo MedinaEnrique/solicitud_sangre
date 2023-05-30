@@ -2,16 +2,19 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   const links = [
-    { title: "Mapa", href: "/mapa" },
+    { title: "Perfil", href: "/perfil" },
     { title: "Solicitudes", href: "/lista-solicitudes" },
     { title: "Certificados", href: "/certificados" },
+    { title: "Mapa", href: "/mapa" },
+    { title: "Login", href: "/login" },
   ];
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-danger py-3">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            Donacion de Sangre ♥
+            Donación de Sangre 
+            <i className="bi bi-heart-pulse ms-2"></i>
           </a>
           <button
             className="navbar-toggler"
