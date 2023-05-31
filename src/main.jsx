@@ -14,6 +14,8 @@ import Mapa from "./views/Mapa.jsx";
 import Login from "./views/Login.jsx";
 import Perfil from "./views/Perfil.jsx";
 import CrearSolicitud from "./views/CrearSolicitud.jsx";
+import CrearPerfil from "./views/CrearPerfil.jsx";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +25,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login/>} />
       <Route path="perfil" element={<Perfil/>} />
       <Route path="crear-solicitud" element={<CrearSolicitud/>} />
+      <Route path="crear-perfil" element={<CrearPerfil/>} />
     </Route>
   )
 );

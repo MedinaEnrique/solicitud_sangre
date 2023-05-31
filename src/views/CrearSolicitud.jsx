@@ -1,10 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const CrearSolicitud = () => {
   const [establecimientos, setEstablecimientos] = useState(null);
-  const sangre = ["A+", "A-", "B+", "B-", "O+", "O-", "AB-", "AB+"];
 
+  const [nombreApellido, setNombreApellido] = useState("");
+  const [cedula, setCedula] = useState("");
+
+  const sangre = ["A+", "A-", "B+", "B-", "O+", "O-", "AB-", "AB+"];
+  const onlyNumbers = /^[0-9\b]+$/;
   useEffect(() => {
     axios
       .get("http://192.168.16.90:8000/api/locales")
@@ -12,11 +17,28 @@ const CrearSolicitud = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  const submitForm = (event) => {
+    event.preventDefault();
+    console.log(onlyNumbers.test(cedula));
+    if (nombreApellido.trim() == "") {
+      Swal.fire({
+        icon: "error",
+        text: "El nombre esta vacio",
+        confirmButtonColor: "red",
+      });
+    } else if (cedula.trim() == "" || !onlyNumbers.test(cedula)) {
+      Swal.fire({
+        icon: "error",
+        text: "Cedula invalida",
+        confirmButtonColor: "red",
+      });
+    }
+  };
   return (
     <div className="col-md-6 mx-auto mt-4">
-      <form>
-      <h2 className="text-center w-100 mb-3">Nueva Solicitud</h2>
-      <hr />
+      <form onSubmit={submitForm}>
+        <h2 className="text-center w-100 mb-3">Nueva Solicitud</h2>
+        <hr />
         <div className="mb-3">
           <label htmlFor="nombreApellido" className="form-label fw-bold">
             Nombre y Apellido
@@ -26,6 +48,7 @@ const CrearSolicitud = () => {
             className="form-control"
             id="nombreApellido"
             placeholder="Escriba su nombre y apellido aquí"
+            onChange={(e) => setNombreApellido(e.target.value)}
           />
         </div>
         <div className="mb-3">
@@ -37,14 +60,19 @@ const CrearSolicitud = () => {
             className="form-control"
             id="cedula"
             placeholder="Escriba su cedula aquí"
+            onChange={(e) => setCedula(e.target.value)}
           />
         </div>
         <div className="mb-3">
           <label htmlFor="tipoSangre" className="form-label fw-bold">
             Tipo de Sangre
           </label>
-          <select className="form-select" id="establecimiento" defaultValue={''}>
-            <option value={''}></option>
+          <select
+            className="form-select"
+            id="establecimiento"
+            defaultValue={""}
+          >
+            <option value={""}></option>
             {sangre &&
               sangre.map((item, index) => (
                 <option key={index} value={item}>
@@ -57,8 +85,12 @@ const CrearSolicitud = () => {
           <label htmlFor="establecimiento" className="form-label fw-bold">
             Establecimiento
           </label>
-          <select className="form-select" id="establecimiento" defaultValue={''}>
-          <option value={''}></option>
+          <select
+            className="form-select"
+            id="establecimiento"
+            defaultValue={""}
+          >
+            <option value={""}></option>
             {establecimientos &&
               establecimientos.map((item, index) => (
                 <option key={index} value={item.id}>
@@ -80,7 +112,7 @@ const CrearSolicitud = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="fechaLimite" className="form-label fw-bold">
-            Fecha Limite
+            Fecha Límite
           </label>
           <input
             type="date"

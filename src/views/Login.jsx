@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Login = () => {
   return (
     <div>
@@ -39,12 +41,13 @@ const Login = () => {
         >
           Iniciar Sesion
         </button>
-        <p className="text-danger ">
-          <a href="#">Registrarse</a>
-        </p>
-        <p>
-          <a href="#">Olvidaste tu contraseña?</a>
-        </p>
+        <Link to={'/crear-perfil'} className="text-danger d-block mb-2">
+          Registrarse
+        </Link>
+        <Link to={'/olvidaste-contrasenha'} className="text-danger d-block mb-2">
+            Olvidaste tu contraseña?
+        </Link>
+        
       </form>
     </div>
   );
