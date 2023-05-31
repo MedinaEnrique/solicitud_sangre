@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   const links = [
-    { title: "Perfil", href: "/perfil" },
-    { title: "Solicitudes", href: "/lista-solicitudes" },
-    { title: "Certificados", href: "/certificados" },
     { title: "Mapa", href: "/mapa" },
+    { title: "Solicitudes", href: "/lista-solicitudes" },
+    { title: "Perfil", href: "/perfil" },
     { title: "Login", href: "/login" },
+    { title: "Certificados", href: "/certificados" },
   ];
   return (
     <>
