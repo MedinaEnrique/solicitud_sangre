@@ -12,6 +12,8 @@ import {
 import ListaSolicitud from "./views/ListaSolicitud.jsx";
 import Mapa from "./views/Mapa.jsx";
 import Login from "./views/Login.jsx";
+import Perfil from "./views/Perfil.jsx";
+import CrearSolicitud from "./views/CrearSolicitud.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +21,8 @@ const router = createBrowserRouter(
       <Route path="lista-solicitudes" element={<ListaSolicitud />} />
       <Route path="mapa" element={<Mapa />} />
       <Route path="login" element={<Login/>} />
+      <Route path="perfil" element={<Perfil/>} />
+      <Route path="crear-solicitud" element={<CrearSolicitud/>} />
     </Route>
   )
 );
