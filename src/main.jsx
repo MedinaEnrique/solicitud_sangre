@@ -15,7 +15,11 @@ import Login from "./views/Login.jsx";
 import Perfil from "./views/Perfil.jsx";
 import CrearSolicitud from "./views/CrearSolicitud.jsx";
 import CrearPerfil from "./views/CrearPerfil.jsx";
-
+import Certificados from "./views/Certificados.jsx";
+import CrearCertificado from "./views/CrearCertificado.jsx"
+import ResetPassword from "./views/ResetPassword.jsx";
+import EditProfile from "./views/EditProfile.jsx";
+import ChangePassword from "./views/ChangePassword.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,8 +28,15 @@ const router = createBrowserRouter(
       <Route path="mapa" element={<Mapa />} />
       <Route path="login" element={<Login/>} />
       <Route path="perfil" element={<Perfil/>} />
+      <Route path="certificados" element={<Certificados/>} />
       <Route path="crear-solicitud" element={<CrearSolicitud/>} />
       <Route path="crear-perfil" element={<CrearPerfil/>} />
+      <Route path="crear-certificado" element={<CrearCertificado/>} />
+      <Route path="/olvidaste-contrasenha" element={<ResetPassword/>} />
+      <Route path="/editar-perfil" element={<EditProfile/>} />
+      <Route path="/change-password"element={<ChangePassword/>} />
+      
+      
     </Route>
   )
 );
@@ -35,3 +46,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+

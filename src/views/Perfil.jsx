@@ -1,13 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 const Perfil = () => {
   const [datos, setDatos] = useState(null);
+
+
   useEffect(() => {
+    const token = localStorage.getItem("token");
     axios
       .get("http://192.168.16.90:8000/api/user/", {
         headers: {
-          Authorization: "Bearer 357|xivkyuADw5AgafhIVuWjVJjt0OQeT4Y4lSOuqbkt",
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => setDatos(response.data))
@@ -16,7 +21,7 @@ const Perfil = () => {
   return (
     <div className="py-4 px-5 text-center">
       {datos && (
-        <div className="card col-md-6 mx-auto">
+        <div className="card col-md-8 col-lg-6 mx-auto">
           <h2>
             <span className="me-1">{datos.name}</span>
             <span>{datos.surname}</span>
@@ -51,15 +56,15 @@ const Perfil = () => {
               </p>
             </div>
             <div className="d-grid gap-3">
-              <a href="#" className="btn btn-primary btn btn-danger">
-                Editar Información
-              </a>
-              <a href="#" className="btn btn-primary btn btn-danger">
-                Cambiar contraseña
-              </a>
-              <a href="#" className="btn btn-primary btn btn-danger ">
-                Cerrar Sesión
-              </a>
+              <Link to="/change-password" className="btn btn-primary btn btn-danger">
+              Cambiar contraseña
+              </Link>
+              <Link to="/editar-perfil" className="btn btn-primary btn btn-danger">
+                Editar información
+              </Link>
+              <Link to="/login" className="btn btn-primary btn btn-danger">
+                Cerrar sesión
+              </Link>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ const Mapa = () => {
 
     const link = 'https://www.google.com/maps/search/?api=1&query='
   return (
-    <div className="border border-danger-subtle">
+    <div className="border border-danger">
         <Header title={"Mapa"}/>
         <ListaDesplegable locationData={locationData} link={link} setCoordenadas = {setCoordenadas}/>
         <Map locationData ={locationData} setLocationData= {setLocationData} link={link} coordenadas= {coordenadas}/>
@@ -18,3 +18,4 @@ const Mapa = () => {
 }
 
 export default Mapa
+
