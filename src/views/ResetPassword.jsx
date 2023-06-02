@@ -39,7 +39,7 @@ const ResetPassword = () => {
                     />
                 </div>
             </div>
-            <h8>Se enviara un link al correo ingresado para que restbalezca su contraseña</h8>
+            <p className='small'>Se enviara un link al correo ingresado para restbalecer su contraseña</p>
            <br />
            <br />
            <div className='d-grid gap-2 col-6 mx-auto'>

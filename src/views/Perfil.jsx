@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Perfil = () => {
   const [datos, setDatos] = useState(null);
-
+  const navigate = useNavigate()
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -18,6 +18,10 @@ const Perfil = () => {
       .then((response) => setDatos(response.data))
       .catch((error) => console.log(error));
   }, []);
+  const cerrarSesion = () => {
+    localStorage.clear()
+    navigate("/login")
+  }
   return (
     <div className="py-4 px-5 text-center">
       {datos && (
@@ -57,14 +61,14 @@ const Perfil = () => {
             </div>
             <div className="d-grid gap-3">
               <Link to="/change-password" className="btn btn-primary btn btn-danger">
-              Cambiar contraseña
+                Cambiar contraseña
               </Link>
               <Link to="/editar-perfil" className="btn btn-primary btn btn-danger">
                 Editar información
               </Link>
-              <Link to="/login" className="btn btn-primary btn btn-danger">
+              <button onClick={cerrarSesion} className="btn btn-primary btn btn-danger">
                 Cerrar sesión
-              </Link>
+              </button>
             </div>
           </div>
         </div>

@@ -10,14 +10,16 @@ const Card = ({ record }) => {
   return (
     <div className="col-md-6 col-lg-4 d-flex align-items-stretch">
       <div className="card bg-white rounded-5 mb-3 w-100 border-danger border-3">
-        <div className="d-flex justify-content-center align-items-center fs-4">
-          <span className="fw-bold">{record.nombre_apellido_donatario}</span>
-          <DeleteButton id={record.id} />
-          <span>
-            <button className="btn btn-link btn-sm">
-              <i className="bi bi-arrow-up-right-circle fs-4"></i>
-            </button>
-          </span>
+        <div className="contenedor align-items-center ms-5">
+          <span className="fw-bold titulo texto ms-5 fs-6">{record.nombre_apellido_donatario}</span>
+         <div className="icono fs-5">
+           <DeleteButton id={record.id} />
+           <span>
+             <button className="btn btn-link btn-sm">
+               <i className="bi bi-arrow-up-right-circle fs-5"></i>
+             </button>
+           </span>
+         </div>
         </div>
 
         <div>

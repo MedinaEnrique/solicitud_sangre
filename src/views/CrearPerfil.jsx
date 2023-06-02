@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
+
 const CrearPerfil = () => {
 	const [nombres, setNombres] = useState("");
 	const [apellidos, setApellidos] = useState("");
@@ -41,6 +42,7 @@ const CrearPerfil = () => {
 			.then((response) => {
 				console.log(response.data.token);
 				localStorage.setItem("token", response.data.token);
+				
 			})
 			.catch((error) => {
 				console.error(error);
@@ -114,8 +116,8 @@ const CrearPerfil = () => {
 						onChange={(e) => setSexo(e.target.value)}
 					>
 						<option value=""></option>
-						<option value="M">M</option>
-						<option value="F">F</option>
+						<option value="M">F</option>
+						<option value="H">M</option>
 					</select>
 				</div>
 
