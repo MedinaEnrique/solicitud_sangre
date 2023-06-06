@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ResetPassword = () => {
     const [email, setEmail] = useState('');
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleResetPassword = () => {

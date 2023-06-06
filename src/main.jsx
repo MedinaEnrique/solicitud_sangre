@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { Provider } from "react-redux";
-import store from './store/index.js'
+import {store,persistor} from './store/index.js'
 
 
 import {
@@ -23,6 +23,7 @@ import CrearCertificado from "./views/CrearCertificado.jsx"
 import ResetPassword from "./views/ResetPassword.jsx";
 import EditProfile from "./views/EditProfile.jsx";
 import ChangePassword from "./views/ChangePassword.jsx";
+import { PersistGate } from "redux-persist/integration/react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,7 +48,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
    <Provider store={store}>
-     <RouterProvider router={router} />
+   <PersistGate loading={null} persistor={persistor}>
+      <RouterProvider router={router} />
+     </PersistGate>
    </Provider>
   </React.StrictMode>
 );

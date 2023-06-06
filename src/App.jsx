@@ -17,7 +17,7 @@ function App() {
         navigate("/lista-solicitudes")
       }
     }else{
-      if (location != '/login' || location != '/crear-perfil') {
+      if (location != '/login' && location != '/crear-perfil') {
         Swal.fire({icon:'error', title:'Debe iniciar sesión'})
       } 
       navigate("/login");

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CrearCertificado = () => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const CrearCertificado = () => {
       .post("http://192.168.16.90:8000/api/certificados", data, config)
       .then((response) => {
         console.log(response);
+        Swal.fire({icon:'success', text:"Se ha generado el certificado correctamente"})
         navigate("/certificados")
       })
       .catch((error) => {
