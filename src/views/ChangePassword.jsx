@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -9,6 +10,7 @@ const ChangePassword = () => {
     const [oldPassword, setOldPassword] = useState("null");
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const token = useSelector((state) => state.token);
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -38,7 +40,7 @@ const ChangePassword = () => {
 
     const changePassword = (data) => {
         // Realizar la solicitud HTTP a la API para restablecer la contraseña
-        const token = localStorage.getItem("token");
+       
 
 
         axios
@@ -78,7 +80,7 @@ const ChangePassword = () => {
 
     return (
         <form onSubmit={handleSubmit} className="text-center card-body mb-5 border p-3 rounded-4 shadow mt-5">
-            <h3 className="text-center w-100 m-0">Cambiar mi contraseña</h3>
+            <h3 className="text-center w-100 m-0">Cambiar mi contraseña:</h3>
             <br />
             <br />
             <div className='col-md-8 mx-auto'>

@@ -2,13 +2,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 
 const Login = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
-
+	const dispatch = useDispatch();
+	// const token = useSelector(state => state.token)
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
@@ -20,7 +23,8 @@ const Login = () => {
 		axios.post("http://192.168.16.90:8000/api/login", data)
 			.then(response => { // El perfil existe, redirigir a la vista de perfil
 				console.log(response.data)
-				localStorage.setItem("token", response.data.token);
+				dispatch ({type :'setToken', payload : response.data.token})
+				dispatch ({type :'setUser', payload : response.data.user})
 				navigate('/perfil')
 			})
 			.catch(error => {

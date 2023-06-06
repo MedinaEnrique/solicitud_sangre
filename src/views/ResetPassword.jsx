@@ -1,17 +1,26 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const ResetPassword = () => {
     const [email, setEmail] = useState('');
-    
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleResetPassword = () => {
         // Realizar la solicitud HTTP a la API para restablecer la contraseña
         axios
-        .post('http://192.168.16.90:8000/api/reset-password/')
+        .post('http://192.168.16.90:8000/api/reset-password', {email})
         .then((response) => {
-            console.log(response.token);
-            localStorage.setItem("token", response.token);
+            console.log(response);
+            Swal.fire({
+                icon: 'success',
+                text: response?.data?.message
+            })
+            navigate('/login')
+
         })
         .catch((error) => {
             console.error(error);

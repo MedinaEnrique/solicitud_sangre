@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 
 const CrearPerfil = () => {
@@ -12,6 +13,7 @@ const CrearPerfil = () => {
 	const [contrasenha, setContrasenha] = useState("");
 	const [confirmarContrasenha, setConfirmarContrasenha] = useState("");
 	const [errorContrasenha, setErrorContrasenha] = useState("");
+	const dispatch = useDispatch();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -41,8 +43,8 @@ const CrearPerfil = () => {
 			.post("http://192.168.16.90:8000/api/registro", data)
 			.then((response) => {
 				console.log(response.data.token);
-				localStorage.setItem("token", response.data.token);
-				
+				dispatch ({type :'setToken', payload : response.data.token})
+				dispatch ({type :'setUser', payload : response.data.user})
 			})
 			.catch((error) => {
 				console.error(error);

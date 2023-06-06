@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const CrearCertificado = () => {
@@ -7,7 +8,7 @@ const CrearCertificado = () => {
   const [establecimientos, setEstablecimientos] = useState(null);
   const [fechaDonacion, setFechaDonacion] = useState('');
   const [localDonacionId, setLocalDonacionId] = useState('');
-
+  const token = useSelector ((state)=>state.token);
   useEffect(() => {
     axios
       .get("http://192.168.16.90:8000/api/locales")
@@ -24,7 +25,6 @@ const CrearCertificado = () => {
       local_donacion_id: localDonacionId
     };
 
-    const token = localStorage.getItem("token")
     const config = {
       headers: {
         Authorization: `Bearer ${token}`
@@ -53,7 +53,7 @@ const CrearCertificado = () => {
   return (
     <div className="col-md-6 mx-auto mt-5 pt-3">
       <form onSubmit={handleSubmit}>
-        <h2 className="text-center w-100 mb-3">Nuevo Certificado</h2>
+        <h2 className="text-center w-100 mb-3">Nuevo Certificado:</h2>
         <hr />
         <div className="mb-3">
           <label htmlFor="fechaDonacion" className="form-label fw-bold">

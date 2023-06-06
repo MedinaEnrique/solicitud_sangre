@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import DeleteButton from "./ButtonDelete";
 
-const Card = ({ record }) => {
+const Card = ({ record, listaSolicitud, setListaSolicitud }) => {
+  const user = useSelector((state) => state.user);
+
   const sangre = ["A+", "A-", "B+", "B-", "O+", "O-", "AB-", "AB+"];
   const icono =
     "https://res.cloudinary.com/dhzoxdo6q/image/upload/donacion-sangre/" +
@@ -13,7 +16,7 @@ const Card = ({ record }) => {
         <div className="contenedor align-items-center ms-5">
           <span className="fw-bold titulo texto ms-5 fs-6">{record.nombre_apellido_donatario}</span>
          <div className="icono fs-5">
-           <DeleteButton id={record.id} />
+           {user?.id == record.creado_por && <DeleteButton id={record.id} listaSolicitud={listaSolicitud} setListaSolicitud={setListaSolicitud}/>}
            <span>
              <button className="btn btn-link btn-sm">
                <i className="bi bi-arrow-up-right-circle fs-5"></i>

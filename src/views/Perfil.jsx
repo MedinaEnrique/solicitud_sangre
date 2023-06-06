@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 
 const Perfil = () => {
   const [datos, setDatos] = useState(null);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const token = useSelector ((state)=>state.token);
+ 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     axios
       .get("http://192.168.16.90:8000/api/user/", {
         headers: {
@@ -17,9 +19,9 @@ const Perfil = () => {
       })
       .then((response) => setDatos(response.data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [token]);
   const cerrarSesion = () => {
-    localStorage.clear()
+    dispatch ({type:'nullToken'})
     navigate("/login")
   }
   return (

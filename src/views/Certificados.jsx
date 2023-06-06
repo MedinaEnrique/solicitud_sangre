@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Certificados = (href) => {
   const [datos, setDatos] = useState(null);
+  const token = useSelector((state) => state.token);
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    
 
     axios
       .get("http://192.168.16.90:8000/api/certificados?desc=1", {
@@ -45,6 +47,10 @@ const Certificados = (href) => {
                 <span>{item.local_donacion}</span>
               </p>
               <p className="d-flex justify-content-between border-bottom px-2">
+                <span className="fw-bold fs-6">Fecha Donacion:</span>
+                <span>{item.fecha_donacion}</span>
+              </p>
+              <p className="d-flex justify-content-between border-bottom px-2">
                 <span className="fw-bold fs-6">Apellido:</span>
                 <span>{item.user.surname}</span>
               </p>
@@ -54,7 +60,7 @@ const Certificados = (href) => {
               </p>
               <p className="d-flex justify-content-between border-bottom px-2">
                 <span className="fw-bold fs-6">Sexo:</span>
-                <span>{item.user.sexo}</span>
+                <span>{item.user.sexo }</span>
               </p>
               <p className="d-flex justify-content-between border-bottom px-2">
                 <span className="fw-bold fs-6">Número de Cédula:</span>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -14,6 +15,7 @@ const CrearSolicitud = () => {
 	const [fechaLimite, setFechaLimite] = useState("");
 	const [telefono, setTelefono] = useState("");
 	const [descripcion, setDescripcion] = useState("");
+	const token = useSelector((state) => state.token);
 
 	const sangre = ["A+", "A-", "B+", "B-", "O+", "O-", "AB-", "AB+"];
 	const onlyNumbers = /^[0-9\b]+$/;
@@ -108,8 +110,7 @@ const CrearSolicitud = () => {
 
 			console.log(data)
 			
-			const token = localStorage.getItem("token")
-			console.log(token)
+			
 			const config = {
 				headers: {
 					Authorization: `Bearer ${token}`
@@ -121,6 +122,7 @@ const CrearSolicitud = () => {
 				.post("http://192.168.16.90:8000/api/solicitudes", data, config)
 				.then((response) => {
 					console.log(response);
+					Swal.fire({icon:'success', text:"Se ha creado tu solicitud correctamente"})
 					navigate("/lista-solicitudes")
 				})
 				.catch((error) => {
@@ -128,11 +130,10 @@ const CrearSolicitud = () => {
 				});
 		}
 	}
-
 	return (
 		<div className="col-md-6 mx-auto mt-4">
 			<form onSubmit={handleSubmit}>
-				<h2 className="text-center w-100 mb-3">Nueva Solicitud</h2>
+				<h2 className="text-center w-100 mb-3">Nueva Solicitud:</h2>
 				<hr />
 				<div className="mb-3">
 					<label htmlFor="nombreApellido" className="form-label fw-bold">
