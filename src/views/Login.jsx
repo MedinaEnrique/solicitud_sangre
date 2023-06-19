@@ -9,8 +9,10 @@ const Login = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState("");
 	const dispatch = useDispatch();
+
 	// const token = useSelector(state => state.token)
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -23,8 +25,8 @@ const Login = () => {
 		axios.post("http://192.168.16.90:8000/api/login", data)
 			.then(response => { // El perfil existe, redirigir a la vista de perfil
 				console.log(response.data)
-				dispatch ({type :'setToken', payload : response.data.token})
-				dispatch ({type :'setUser', payload : response.data.user})
+				dispatch({ type: 'setToken', payload: response.data.token })
+				dispatch({ type: 'setUser', payload: response.data.user })
 				navigate('/perfil')
 			})
 			.catch(error => {
@@ -71,7 +73,7 @@ const Login = () => {
 							Contraseña
 						</label>
 						<input
-							type="password"
+							type={showPassword ? 'text' : 'password'}
 							className="form-control mx-auto border-0 border-bottom border-dark rounded-0"
 							id="InputPassword"
 							value={password}
@@ -79,6 +81,14 @@ const Login = () => {
 							onChange={(e) => setPassword(e.target.value)}
 							required
 						/>
+					</div>
+					<div className="mb-2">
+						<input
+							type="checkbox"
+							checked={showPassword}
+							onChange={(e) => setShowPassword(e.target.checked)}
+						/>
+						<label htmlFor="ShowPassword">Mostrar contraseña</label>
 					</div>
 				</div>
 				{error && <p className="text-danger text-center">{error}</p>}
